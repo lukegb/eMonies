@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927205918) do
+ActiveRecord::Schema.define(version: 20141019111917) do
 
   create_table "acceptances", force: true do |t|
     t.integer  "amount"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140927205918) do
 
   create_table "people", force: true do |t|
     t.string   "name"
-    t.integer  "account_number"
-    t.integer  "sort_code"
+    t.string   "account_number"
+    t.string   "sort_code"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "reset_password_token"
