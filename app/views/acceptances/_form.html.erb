@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :amount %><br />
-    <%= f.number_field :amount, autofocus: true, step: 0.01, value: acceptance.amount %>
+    <%= f.number_field :amount, autofocus: true, step: 0.01, value: (acceptance.persisted? ? acceptance.amount : nil) %>
   </div>
   <div class="field">
     <%= f.label :note %><br />
