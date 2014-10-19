@@ -7,8 +7,6 @@ class Purchase < ActiveRecord::Base
   belongs_to :person
   has_many :acceptances
 
-  default_scope { order('date DESC') }
-
   def self.dealtwith
     self.all.includes(:acceptances).select do |p|
       accepted = false

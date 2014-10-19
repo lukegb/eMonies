@@ -1,16 +1,20 @@
 require 'purchases_helper'
 
 class PurchasesController < ApplicationController
+  include SmartListing::Helper::ControllerExtensions
+  helper SmartListing::Helper
+
   before_action :authenticate_person!
 
   # GET /purchases
   # GET /purchases.json
   def index
-    @purchases = Purchase.includes(:acceptances).all
+    @purchases = smart_listing_create :purchases, Purchase.includes(:acceptances).all, partial: "purchases/list", default_sort: {date: "asc"}, per_page: 10
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @purchases }
+      format.js # index.js.erb
     end
   end
 

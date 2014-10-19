@@ -1,35 +1,8 @@
 <h1>Listing purchases</h1>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Name</th>
-    <th>By</th>
-    <th>Amount</th>
-    <th>Accepted by me</th>
-    <th>Accepted total</th>
-    <th>Accepted</th>
-    <th>Complete</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
+<h4><%= link_to 'New Purchase', new_purchase_path %></h4>
 
-<% @purchases.each do |purchase| %>
-  <tr>
-    <td><%= purchase.date %></td>
-    <td><%= purchase.name %></td>
-    <td><%= purchase.person.name %></td>
-    <td><%= to_money purchase.amount %></td>
-    <td><%= to_money(purchase.accepted_by_me(current_person) || 0) %></td>
-    <td><%= to_money purchase.accepted_total %></td>
-    <td><%= check_box_tag("accepted#{purchase.id}", "1", (not purchase.accepted_by_me(current_person).nil?), :disabled=>true) %></td>
-    <td><%= check_box_tag("complete#{purchase.id}", "1", purchase.accepted_total == purchase.amount, :disabled=>true) %></td>
-    <td><%= truncate(purchase.description, separator: ' ') %></td>
-    <td><%= link_to 'Show', purchase %></td>
-  </tr>
-<% end %>
-</table>
+<%= smart_listing_render :purchases %>
 
 <br />
 
-<%= link_to 'New Purchase', new_purchase_path %>
