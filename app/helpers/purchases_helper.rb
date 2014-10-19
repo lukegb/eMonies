@@ -69,7 +69,6 @@ module PurchasesHelper
     #Iterate over the triangular form
     d.hash.each do |to, froms|
       froms.each do |from, amount|
-        next if to < from
 
         # Store this in the caching table Owednesses
         o = Owedness.new(from_person: Person.find(from), to_person: Person.find(to), amount: amount)
