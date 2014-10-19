@@ -1,9 +1,2 @@
 <p><h1>eMonies</h1></p>
 <p><h2>Hi <%= current_person.name  %></h2></p>
-
-<p>
-  <h3>Status</h3>
-  <ul>
-    <li><%= link_to "#{@num_outstanding} #{(@num_outstanding > 1) ? "purchase" : "purchases"} needing acceptances from you", :purchases %></li>
-  </ul>
-</p>
