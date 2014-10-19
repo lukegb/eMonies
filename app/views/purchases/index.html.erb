@@ -6,10 +6,11 @@
     <th>Name</th>
     <th>By</th>
     <th>Amount</th>
-    <th>Description</th>
     <th>Accepted by me</th>
     <th>Accepted total</th>
-    <th>Done</th>
+    <th>Accepted</th>
+    <th>Complete</th>
+    <th>Description</th>
     <th></th>
   </tr>
 
@@ -19,10 +20,11 @@
     <td><%= purchase.name %></td>
     <td><%= purchase.person.name %></td>
     <td><%= to_money purchase.amount %></td>
-    <td><%= purchase.description %></td>
     <td><%= to_money(purchase.accepted_by_me(current_person) || 0) %></td>
     <td><%= to_money purchase.accepted_total %></td>
-    <td><%= check_box_tag("check#{purchase.id}", "1", purchase.accepted_total == purchase.amount, :disabled=>true) %></td>
+    <td><%= check_box_tag("accepted#{purchase.id}", "1", (not purchase.accepted_by_me(current_person).nil?), :disabled=>true) %></td>
+    <td><%= check_box_tag("complete#{purchase.id}", "1", purchase.accepted_total == purchase.amount, :disabled=>true) %></td>
+    <td><%= purchase.description %></td>
     <td><%= link_to 'Show', purchase %></td>
   </tr>
 <% end %>
