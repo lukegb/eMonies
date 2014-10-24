@@ -32,3 +32,12 @@ nav {
 .content table {
   width: 100%;
 }
+
+.modeText {
+  width: 100%:
+  display: block;
+  text-align: center;
+  font-size: 20pt;
+  font-weight: bold;
+  color: red;
+}
