@@ -48,15 +48,12 @@ module PurchasesHelper
 
     # Now, we need to simplify the resulting owednesses, so that when A owes B, and B owes A, we just need one transaction to fix this.
     # This will generate a triangular matrix
-    Person.all.each do |from|
-      if d.key?(from.id) then
-        Person.all.each do |to|
-          if d[from.id].key?(to.id) then
-            #so TO owes FROM something, does FROM owe TO?
-            if d.key?(to.id) && d[to.id].key?(from.id) then
-              d[from.id][to.id] -= d[to.id][from.id]
-              d[to.id][from.id] = 0
-            end
+    d.hash.each do |to, froms|
+      froms.keys.each do |from|
+        if d[from].key?(to) then
+          if d.key?(to) && d[to].key?(from) then
+            d[from][to] -= d[to][from]
+            d[to][from] = 0
           end
         end
       end
