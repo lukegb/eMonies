@@ -38,6 +38,7 @@ class PurchasesController < ApplicationController
   # GET /purchases/new.json
   def new
     @purchase = Purchase.new
+    @purchase.person_id = current_person.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,9 +54,7 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
-    p = purchase_params
-    p[:person_id] = current_person.id
-    @purchase = Purchase.new(p)
+    @purchase = Purchase.new(purchase_params)
 
     respond_to do |format|
       if @purchase.save
@@ -111,6 +110,6 @@ class PurchasesController < ApplicationController
 
   private
   def purchase_params
-    params.require(:purchase).permit(:name, :amount, :description, :date)
+    params.require(:purchase).permit(:name, :amount, :description, :date, :person_id)
   end
 end

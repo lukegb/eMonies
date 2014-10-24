@@ -16,6 +16,14 @@
     <%= f.date_field :date %>
   </div>
   <div class="field">
+    <%= f.label :person %><br />
+    <% if @purchase.persisted? %>
+      <%= @purchase.person.name %>
+    <% else %>
+      <%= select(:purchase, :person_id, Person.all.collect{|p| [p.name, p.id] }) %>
+    <% end %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
