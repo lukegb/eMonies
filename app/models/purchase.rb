@@ -1,7 +1,7 @@
 class Purchase < ActiveRecord::Base
   validates :name, presence: true
   validates :amount, presence: true
-  validates :amount, numericality: {only_integer: false}
+  validates :amount, numericality: {only_integer: false, greater_than: 0}
   validates :person_id, presence: true
 
   belongs_to :person
