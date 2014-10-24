@@ -1,3 +1,5 @@
+require 'AmountMultiplier'
+
 class Purchase < ActiveRecord::Base
   validates :name, presence: true
   validates :amount, presence: true
@@ -6,6 +8,8 @@ class Purchase < ActiveRecord::Base
 
   belongs_to :person
   has_many :acceptances
+
+  include AmountMultiplier
 
   def self.dealtwith
     self.all.includes(:acceptances).select do |p|
@@ -32,13 +36,5 @@ class Purchase < ActiveRecord::Base
     self.acceptances.reduce(0) do |acc, a|
       acc + (a.amount.nil? ? 0 : a.amount)
     end
-  end
-
-  def amount
-    (read_attribute(:amount) || 0)/100.to_f
-  end
-
-  def amount=(value)
-    write_attribute(:amount, (value.to_f*100).to_i)
   end
 end

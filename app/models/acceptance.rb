@@ -1,3 +1,5 @@
+require 'AmountMultiplier'
+
 class Acceptance < ActiveRecord::Base
   validates :amount, numericality: {only_integer: false, greater_than: 0}
   validates :amount, presence: true
@@ -8,11 +10,5 @@ class Acceptance < ActiveRecord::Base
   belongs_to :person
   belongs_to :purchase
 
-  def amount
-    (read_attribute(:amount) || 0)/100.to_f
-  end
-
-  def amount=(value)
-    write_attribute(:amount, (value.to_f*100).to_i)
-  end
+  include AmountMultiplier
 end
