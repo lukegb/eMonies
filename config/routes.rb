@@ -3,6 +3,7 @@ EMonies::Application.routes.draw do
   root :to => 'special#index'
 
   get 'summary' => 'special#summary'
+  get 'summary/debug' => 'special#debug'
 
   resources :people
   resources :purchases

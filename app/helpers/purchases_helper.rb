@@ -30,6 +30,8 @@ module PurchasesHelper
   end
 
   def self.recalculate_owes!
+    dbg = {}
+
     n_people = Person.all.size
 
     # Use a nxn array structure, in row -> column order. rows are who paid for an item, columns are the amount owed by the others to that person.
@@ -46,6 +48,10 @@ module PurchasesHelper
       end
     end
 
+    dbg[:raw] = d.clone
+
+    dbg[:simplified] = []
+
     # Now, we need to simplify the resulting owednesses, so that when A owes B, and B owes A, we just need one transaction to fix this.
     # This will generate a triangular matrix
     d.hash.each do |to, froms|
@@ -57,10 +63,13 @@ module PurchasesHelper
           end
         end
       end
+      dbg[:simplified].push d.clone
     end
+
 
     Owedness.delete_all
 
+    dbg[:person_books] = []
     person_books = {}
 
     #Iterate over the triangular form
@@ -80,6 +89,7 @@ module PurchasesHelper
         person_books[to] += amount
 
       end
+      dbg[:person_books].push person_books.clone
     end
 
     # Calculate the minimum possible transactions to fix this
@@ -106,10 +116,14 @@ module PurchasesHelper
       end
     end
 
+    dbg[:minimal] = transactions
+
     # Store the required transactions
     MinimalTransaction.delete_all
     transactions.each { |trans| MinimalTransaction.new(from_person: Person.find(trans[:from]), to_person: Person.find(trans[:to]), amount: trans[:amount]).save! }
 
     true
+
+    dbg
   end
 end

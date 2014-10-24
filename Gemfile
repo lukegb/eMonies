@@ -43,3 +43,5 @@ gem 'thin'
 # gem 'debugger'
 
 gem "smart_listing"
+
+gem 'haml'
