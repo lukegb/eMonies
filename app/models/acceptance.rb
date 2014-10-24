@@ -2,6 +2,7 @@ class Acceptance < ActiveRecord::Base
   validates :amount, numericality: {only_integer: false}
   validates :amount, presence: true
   validates :person_id, presence: true
+  validates :person_id, :uniqueness => { :scope => :purchase_id }
   validates :purchase_id, presence: true
 
   belongs_to :person

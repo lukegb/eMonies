@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019111917) do
+ActiveRecord::Schema.define(version: 20141024220750) do
 
   create_table "acceptances", force: true do |t|
     t.integer  "amount"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20141019111917) do
     t.integer  "person_id"
     t.integer  "purchase_id"
   end
+
+  add_index "acceptances", ["person_id", "purchase_id"], name: "index_acceptances_on_person_id_and_purchase_id", unique: true
 
   create_table "minimal_transactions", force: true do |t|
     t.integer "from_person_id"
