@@ -1,0 +1,21 @@
+= form_for(acceptance) do |f|
+  = f.hidden_field :purchase_id
+
+  - if acceptance.errors.any?
+    #error_explanation
+      %h2 #{pluralize(acceptance.errors.count, "error")} prohibited this acceptance from being saved:
+
+      %ul
+        = acceptance.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %label= f.label :amount
+    %br
+    %div= f.number_field :amount, autofocus: true, step: 0.01, value: (acceptance.persisted? ? acceptance.amount : nil)
+  .field
+    %label= f.label :note
+    %br
+    %div= f.text_area :note
+  .actions
+    = f.submit

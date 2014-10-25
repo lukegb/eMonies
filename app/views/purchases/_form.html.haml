@@ -1,0 +1,39 @@
+= form_for(@purchase) do |f|
+  - if @purchase.errors.any?
+    #error_explanation
+      %h2 #{pluralize(@purchase.errors.count, "error")} prohibited this purchase from being saved:
+
+      %ul
+        - @purchase.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %label= f.label :date
+    %br
+    %div= f.date_field :date
+
+  .field
+    %label= f.label :person
+    %br
+    - if @purchase.persisted?
+      = @purchase.person.name
+    - else
+      = select(:purchase, :person_id, Person.all.collect{|p| [p.name, p.id] })
+
+  .field
+    %label= f.label :name
+    %br
+    %div= f.text_field :name
+
+  .field
+    %label= f.label :amount
+    %br
+    %div= f.number_field :amount, step: 0.01, value: @purchase.amount
+
+  .field
+    %label= f.label :description
+    %br
+    %div= f.text_area :description, cols: 50, rows: 20
+
+  .actions
+    = f.submit

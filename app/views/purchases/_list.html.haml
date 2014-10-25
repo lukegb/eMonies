@@ -1,0 +1,29 @@
+- unless smart_listing.empty? then
+  %table
+    %tr
+      %th= smart_listing.sortable "Date", :date
+      %th= smart_listing.sortable "Name", :name
+      %th By
+      %th= smart_listing.sortable "Amount", :amount
+      %th Accepted by me
+      %th Accepted total
+      %th Accepted
+      %th Complete
+      %th Description
+      %th
+  - smart_listing.collection.each do |purchase|
+    %tr
+      %td= purchase.date
+      %td= purchase.name
+      %td= purchase.person.name
+      %td= to_money purchase.amount
+      %td= to_money(purchase.accepted_by_me(current_person) || 0)
+      %td= to_money purchase.accepted_total
+      %td= check_box_tag("accepted#{purchase.id}", "1", (not purchase.accepted_by_me(current_person).nil?), :disabled=>true)
+      %td= check_box_tag("complete#{purchase.id}", "1", purchase.accepted_total == purchase.amount, :disabled=>true)
+      %td= truncate(purchase.description, separator: ' ')
+      %td= link_to 'Show', purchase
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+- else
+  %p No purchases

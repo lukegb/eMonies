@@ -1,0 +1,37 @@
+%h1 Summary
+
+%p 
+  This table shows the money (and the negative) owed from one person to another.
+  A positive amount indicates money is owed in that direction. Read in row then column order (to, from).
+
+%table
+  %tr
+    %th
+    %th From
+
+  %tr
+    %th To
+    %th \
+    - Person.all.each do |from|
+      %th= from.name
+
+  - Person.all.each do |to|
+    %tr
+      %th
+      %th= to.name
+      - Person.all.each do |from|
+        %td= (to == from ? "~" : to_money(Owedness.owes(to, from)))
+
+%hr
+
+%h2 Minimal transactions required to fix
+%table
+  %tr
+    %th To
+    %th From
+    %th Amount
+  - MinimalTransaction.all.each do |trans|
+    %tr
+      %td= trans.to_person.name
+      %td= trans.from_person.name
+      %td= to_money trans.amount

@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%p
+  %label Name:
+  = @person.name
+%p
+  %label Username:
+  = @person.email
+%p
+  %label Account number:
+  = @person.account_number
+%p
+  %label Sort code:
+  = @person.sort_code
+
+
+= link_to 'Edit', edit_person_path(@person)
+|
+= link_to 'Back', people_path

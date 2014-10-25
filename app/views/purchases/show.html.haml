@@ -1,0 +1,51 @@
+%p#notice= notice
+
+%h3 Purchase
+
+%p
+  %b Date:
+  = @purchase.date
+
+%p
+  %b Name:
+  = @purchase.name
+
+%p
+  %b By:
+  = @purchase.person.name
+
+%p
+  %b Amount:
+  = to_money @purchase.amount
+
+%p
+  %b Description:
+  = simple_format(@purchase.description)
+
+%hr
+
+%h3 Acceptances
+%table
+  %tr
+    %th By
+    %th Amount
+    %th Note
+  - @purchase.acceptances.each do |acceptance|
+    %tr
+      %td= acceptance.person.name
+      %td= to_money(acceptance.amount || 0)
+      %td= acceptance.note
+  %tr
+    %td Total:
+    %td= to_money @purchase.accepted_total
+
+%h3 Change mine
+= render partial: "acceptances/form", locals: {acceptance: @my_acceptance}
+
+%hr
+
+- if @purchase.person == current_person then
+  = link_to 'Edit', edit_purchase_path(@purchase)
+  |
+
+= link_to 'Back', purchases_path

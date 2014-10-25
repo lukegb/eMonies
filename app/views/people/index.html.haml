@@ -1,0 +1,22 @@
+%h1 Listing people
+
+%table
+  %tr
+    %th Name
+    %th Email
+    %th Account number
+    %th Sort code
+    %th
+    %th
+  - @people.each do |person|
+    %tr
+      %td= person.name
+      %td= person.email
+      %td= person.account_number
+      %td= person.sort_code
+      %td= link_to 'Show', person
+      %td= link_to 'Edit', edit_person_path(person)
+
+%br
+
+= link_to 'New Person', new_person_path
