@@ -36,6 +36,8 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    return head(:forbidden) unless @person == current_person
+
     @person = Person.find(params[:id])
   end
 
