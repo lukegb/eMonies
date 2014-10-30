@@ -29,3 +29,4 @@ gem 'haml'
 gem 'tzinfo-data'
 
 gem 'chartkick'
+gem 'redcarpet'
