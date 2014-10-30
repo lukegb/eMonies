@@ -47,5 +47,7 @@
 - if @purchase.person == current_person then
   = link_to 'Edit', edit_purchase_path(@purchase)
   |
+  = link_to 'Delete', purchase_path(@purchase), data: { confirm: "Are you sure you wish to delete this purchase?" }, :method => :delete 
+  |
 
 = link_to 'Back', purchases_path
