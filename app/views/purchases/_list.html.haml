@@ -1,6 +1,7 @@
 - unless smart_listing.empty? then
   %table
     %tr
+      %th= smart_listing.sortable "#", :id
       %th= smart_listing.sortable "Date", :date
       %th= smart_listing.sortable "Name", :name
       %th By
@@ -13,6 +14,7 @@
       %th
     - smart_listing.collection.each do |purchase|
       %tr
+        %td= link_to purchase.id, purchase
         %td= purchase.date
         %td= purchase.name
         %td= purchase.person.name
