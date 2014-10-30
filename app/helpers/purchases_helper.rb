@@ -120,7 +120,8 @@ module PurchasesHelper
       negative_people.each do |from, possible|
         amt = (exp < -possible) ? exp : -possible
         transactions.push Hash[from: from, to: to, amount: amt]
-        negative_people[from] -= amt
+        negative_people[from] += amt
+        exp -= amt
         negative_people.delete(from) if negative_people[from] == 0
       end
     end
