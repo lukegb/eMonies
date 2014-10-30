@@ -38,6 +38,15 @@ module PurchasesHelper
     # The diagonal will (by definition) always be zero. Implemented using a SparseArray, so that memory usage is not large
     d = SparseArray.new
 
+    Person.all.each do |p|
+      Person.all.each do |p2|
+        next if p == p2 or d.key?(p2)
+
+        d[p.id][p2.id] = 0
+        d[p2.id][p.id] = 0
+      end
+    end
+
     Purchase.all.each do |p|
       #As this item was paid for by p.person, they are owed the money listed in acceptances by the others (might include themselves).
       p.acceptances.each do |a|

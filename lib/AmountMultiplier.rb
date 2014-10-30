@@ -1,9 +1,11 @@
+require "bigdecimal"
+
 module AmountMultiplier
   def amount
-    (read_attribute(:amount) || 0)/100.to_f
+    BigDecimal.new(read_attribute(:amount) || 0)/100
   end
 
   def amount=(value)
-    write_attribute(:amount, (value.to_f*100).to_i)
+    write_attribute(:amount, (BigDecimal.new(value)*100).to_i)
   end
 end
