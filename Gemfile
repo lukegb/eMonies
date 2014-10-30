@@ -27,3 +27,5 @@ gem "smart_listing"
 gem 'haml'
 
 gem 'tzinfo-data'
+
+gem 'chartkick'
