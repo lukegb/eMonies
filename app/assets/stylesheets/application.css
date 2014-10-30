@@ -41,3 +41,7 @@ nav {
   font-weight: bold;
   color: red;
 }
+
+.pieChart {
+  width: 400px;
+}

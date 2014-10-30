@@ -39,6 +39,10 @@
     %td Total:
     %td= to_money @purchase.accepted_total
 
+- if @purchase.acceptances.count > 0 then
+  .pieChart
+    = pie_chart @purchase.acceptances.map {|x| [x.person.name, x.amount]}, library: {is3D: true, pieSliceText: 'label', legend: 'none'}
+
 %h3 Change mine
 = render partial: "acceptances/form", locals: {acceptance: @my_acceptance}
 
