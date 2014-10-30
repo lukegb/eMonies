@@ -13,7 +13,7 @@
   %label Sort code:
   = @person.sort_code
 
-
-= link_to 'Edit', edit_person_path(@person)
-|
+- if @person == current_person then
+  = link_to 'Edit', edit_person_path(@person)
+  |
 = link_to 'Back', people_path
