@@ -24,11 +24,11 @@ class Purchase < ActiveRecord::Base
   end
 
   def requires_action_by_me?(current_person)
-    not self.accepted_by_me(current_person) and not self.dealtwith
+    not self.accepted_by_me(current_person) and not self.accepted_total == self.amount
   end
 
   def pending_other_acceptances?(current_person)
-    not self.requires_action_by_me?(current_person) and self.person == current_person and not self.dealtwith
+    not self.requires_action_by_me?(current_person) and self.person == current_person and not self.accepted_total == self.amount
   end
 
   def accepted_by_me(current_person)
