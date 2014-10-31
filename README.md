@@ -1,7 +1,7 @@
 eMonies
 =======
 
-Your Money. Managed.
+**Your Money.** *Managed.*
 
 Glowing Praise for this Readme
 ------------------------------
