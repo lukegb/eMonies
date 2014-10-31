@@ -28,6 +28,15 @@ class PurchasesController < ApplicationController
       @my_acceptance.person = current_person
     end
 
+    if @purchase.acceptances.count > 0 then
+      @purchase_acceptances = @purchase.acceptances.map do |x|
+        [x.person.name, x.amount]
+      end
+      if @purchase.accepted_total < @purchase.amount then
+        @purchase_acceptances << ['Not yet accepted', @purchase.amount - @purchase.accepted_total]
+      end
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @purchase }
