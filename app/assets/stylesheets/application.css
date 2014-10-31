@@ -45,3 +45,11 @@ nav {
 .pieChart {
   width: 400px;
 }
+
+.requiresActionByMe {
+  background-color: #ffe4e1;
+}
+
+.pendingOtherAcceptances {
+  background-color: #b0e0e6;
+}
