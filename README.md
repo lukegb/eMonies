@@ -23,8 +23,8 @@ Reconciliation of <strong>fun</strong>ds is made easy and even **fun** by eMonie
 form. You can even see a calculation that eMonies has made of a way of restoring order to the force
 using the fewest possible transactions. Never before have house finances been so strife-free!
 
-Glowing Praise for this Readme
-------------------------------
+Glowing Praise for this Readme and its Original Author
+------------------------------------------------------
 
 > If you do, I will refuse to eMonies any more.
 
