@@ -8,4 +8,8 @@ module ApplicationHelper
     @markdown ||= Redcarpet::Markdown.new(@markdown_renderer, autolink: true, space_after_headers: true, fenced_code_blocks: true, tables: true)
     @markdown.render(content).html_safe
   end
+
+  def purchase_row_class(purchase, current_person)
+    "purchaseRow #{purchase.requires_action_by_me?(current_person) ? 'requiresActionByMe' : ''} #{purchase.pending_other_acceptances?(current_person) ? 'pendingOtherAcceptances' : ''}"
+  end 
 end
