@@ -13,7 +13,7 @@
       %th Description
       %th
     - smart_listing.collection.each do |purchase|
-      %tr
+      %tr{:class => purchase_row_class(purchase, current_person)}
         %td= link_to purchase.id, purchase
         %td= purchase.date
         %td= purchase.name
