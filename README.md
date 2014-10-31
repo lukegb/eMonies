@@ -59,3 +59,9 @@ If you cloned eMonies directly from an upstream repository, updating eMonies is 
 5. Execute `bundle exec rake db:migrate` from inside the repository root.
 6. Wait for rake to migrate some database.
 7. Hooray! You have now updated your instance of eMonies to a more sensible version.
+
+Patch Submission Guidance
+-------------------------
+
+Pull Requests should usually be raised in response to an issue. The "main" upstream repository for this
+project can be found at alown/eMonies.
