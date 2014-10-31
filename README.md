@@ -18,7 +18,7 @@ will necessarily need to be a part of every purchase. Participants in the eMonie
 to accept purchases at will, or to accept a less-than-equal share of any given purchase. It is entirely up
 to them.
 
-Reconciliation of <strong>fun</strong>ds is made easy and even fun by eMonies! Simply navigate to the
+Reconciliation of <strong>fun</strong>ds is made easy and even **fun** by eMonies! Simply navigate to the
 "Summary between people" page and you can view who owes what money in a simple and easy-to-use matrix
 form. You can even see a calculation that eMonies has made of a way of restoring order to the force
 using the fewest possible transactions. Never before have house finances been so strife-free!
