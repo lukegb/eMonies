@@ -45,3 +45,30 @@ nav {
 .pieChart {
   width: 400px;
 }
+
+nav {
+  background-color: #000;
+  border-top: 5px solid #000;
+  border-bottom: 5px solid #000;
+}
+
+nav li {
+  border-right: 1px solid #fff;
+
+  &:last-of-type {
+    border-right: none;
+  }
+}
+
+nav a {
+  color: #fff;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    color: #e8008c;
+    text-decoration: none;
+  }
+}
