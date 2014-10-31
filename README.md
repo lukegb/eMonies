@@ -7,6 +7,12 @@ eMonies is a Ruby on Rails application for managing the shared finances of a gro
 It was developed with the aim of being used for a house of around four students, living in the United Kingdom,
 who frequently make purchases for the common good of the house.
 
+Example use cases include:
+
+* Buying house furniture and working out who owes what
+* Jointly purchasing food
+* Providing a target for bug reports
+
 Glowing Praise for this Readme
 ------------------------------
 
