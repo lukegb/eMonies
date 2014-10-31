@@ -1,5 +1,4 @@
-eMonies
-=======
+![eMonies logo](http://i.imgur.com/aloZIYc.png)
 
 **Your Money.** *Managed.*
 
