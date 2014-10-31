@@ -37,10 +37,7 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
-
     return head(:forbidden) unless @person == current_person
-
-    @person
   end
 
   # POST /people
