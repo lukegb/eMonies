@@ -7,10 +7,12 @@ Glowing Praise for this Readme
 ------------------------------
 
 > If you do, I will refuse to eMonies any more.
-Kieran
+
+~ Kieran
 
 > I will hit you.
-Peter
+
+~ Peter
 
 Getting Started
 ---------------
