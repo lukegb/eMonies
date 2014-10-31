@@ -13,6 +13,11 @@ Example use cases include:
 * Jointly purchasing food
 * Providing a target for bug reports
 
+eMonies has been designed with the goal of being usable even in the instance that not everyone in the house
+will necessarily need to be a part of every purchase. Participants in the eMonies system are free to decline
+to accept purchases at will, or to accept a less-than-equal share of any given purchase. It is entirely up
+to them.
+
 Glowing Praise for this Readme
 ------------------------------
 
