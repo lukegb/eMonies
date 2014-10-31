@@ -23,6 +23,14 @@ class Purchase < ActiveRecord::Base
     end
   end
 
+  def self.requires_action_by?(current_person)
+    not self.accepted_by_me(current_person) and not self.dealtwith
+  end
+
+  def self.pending_other_acceptances?(current_person)
+    self.person == current_person and not self.dealtwith
+  end
+
   def accepted_by_me(current_person)
     self.acceptances.each do |a|
       if a.person == current_person then
