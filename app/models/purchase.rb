@@ -11,18 +11,6 @@ class Purchase < ActiveRecord::Base
 
   include AmountMultiplier
 
-  def self.dealtwith
-    self.all.includes(:acceptances).select do |p|
-      accepted = false
-      p.acceptances.each do |a|
-        accepted = true
-        break
-      end
-
-      accepted
-    end
-  end
-
   def requires_action_by_me?(current_person)
     not self.accepted_by_me(current_person) and not self.accepted_total == self.amount
   end
