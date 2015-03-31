@@ -13,6 +13,20 @@
         %td= to
         %td= amount
 
+%h3 Raw(spec)
+%table
+  %tr
+    %th From
+    %th To
+    %th Amount
+  - @dbg[:raw_spec].hash.each do |to, froms|
+    - froms.each do |from, amount|
+      %tr
+        %td= from
+        %td= to
+        %td= amount
+
+
 %h3 Simplifed
 - @dbg[:simplified].each_with_index do |s, i|
   %h4= i

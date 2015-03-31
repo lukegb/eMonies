@@ -30,8 +30,23 @@
     %th To
     %th From
     %th Amount
-  - MinimalTransaction.all.each do |trans|
+  - MinimalTransaction.where(speculative: false).each do |trans|
     %tr
       %td= trans.to_person.name
       %td= trans.from_person.name
       %td= to_money trans.amount
+
+- if MinimalTransaction.where(speculative: true).exists?
+  %hr
+  
+  %h2 Speculative minimal transactions required to fix
+  %table
+    %tr
+      %th To
+      %th From
+      %th Amount
+    - MinimalTransaction.where(speculative: true).each do |trans|
+      %tr
+        %td= trans.to_person.name
+        %td= trans.from_person.name
+        %td= to_money trans.amount

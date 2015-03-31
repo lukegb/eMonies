@@ -11,23 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024220750) do
+ActiveRecord::Schema.define(version: 20150331162914) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "acceptances", force: true do |t|
     t.integer  "amount"
     t.text     "note"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "person_id"
     t.integer  "purchase_id"
   end
 
-  add_index "acceptances", ["person_id", "purchase_id"], name: "index_acceptances_on_person_id_and_purchase_id", unique: true
+  add_index "acceptances", ["person_id", "purchase_id"], name: "index_acceptances_on_person_id_and_purchase_id", unique: true, using: :btree
 
   create_table "minimal_transactions", force: true do |t|
     t.integer "from_person_id"
     t.integer "to_person_id"
     t.integer "amount"
+    t.boolean "speculative",    default: false
   end
 
   create_table "owednesses", force: true do |t|
@@ -40,8 +44,8 @@ ActiveRecord::Schema.define(version: 20141024220750) do
     t.string   "name"
     t.string   "account_number"
     t.string   "sort_code"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -57,16 +61,16 @@ ActiveRecord::Schema.define(version: 20141024220750) do
     t.text     "email"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true
-  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
-  add_index "people", ["unlock_token"], name: "index_people_on_unlock_token", unique: true
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+  add_index "people", ["unlock_token"], name: "index_people_on_unlock_token", unique: true, using: :btree
 
   create_table "purchases", force: true do |t|
     t.string   "name"
     t.integer  "amount"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "person_id"
     t.date     "date"
   end
